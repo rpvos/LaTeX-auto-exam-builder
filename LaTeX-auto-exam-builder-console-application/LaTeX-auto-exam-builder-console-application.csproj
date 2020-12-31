@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>LaTeX_auto_exam_builder_console_application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="example.tex" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="input\example.tex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LaTeX-auto-exam-builder-console-application": {
+      "commandName": "Project",
+      "commandLineArgs": "example.tex"
+    }
+  }
+}
