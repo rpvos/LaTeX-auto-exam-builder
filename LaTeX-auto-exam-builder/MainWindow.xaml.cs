@@ -1,19 +1,13 @@
-﻿using Microsoft.Win32;
+﻿
+
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfMath;
 using WpfMath.Converters;
 
@@ -22,6 +16,7 @@ namespace LaTeX_auto_exam_builder
     public partial class MainWindow : Window
     {
         private readonly TexFormulaParser _formulaParser = new TexFormulaParser();
+        private WebBrowserController webBrowserController;
 
         private static ComboBoxItem DemoFormula(string name, string text) =>
             new ComboBoxItem { Content = name, DataContext = text };
@@ -44,6 +39,10 @@ namespace LaTeX_auto_exam_builder
 
             FormulaSelector.ItemsSource = _testFormulas;
             FormulaSelector.SelectedIndex = 0;
+
+            this.webBrowserController = new WebBrowserController(pdfWebViewer);
+            latexFileTextBox.Text = webBrowserController.loadFile();
+            webBrowserController.loadTextField(latexFileTextBox.Text);
         }
 
         private TexFormula? ParseFormula(string input)
@@ -61,6 +60,11 @@ namespace LaTeX_auto_exam_builder
             }
 
             return formula;
+        }
+
+        public void convertToPDFButton_Click(object sender, RoutedEventArgs e)
+        {
+            webBrowserController.loadTextField(latexFileTextBox.Text);
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -135,5 +139,11 @@ namespace LaTeX_auto_exam_builder
             var item = (ComboBoxItem)((ComboBox)sender).SelectedItem;
             InputTextBox.Text = (string)item.DataContext;
         }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
     }
 }

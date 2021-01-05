@@ -8,7 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="input\example.tex" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="input\example.tex">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="WpfMath" Version="0.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="temp\" />
+    <Folder Include="output\" />
   </ItemGroup>
 
   <Import Project="..\LaTeXToPdf\LaTeXToPdf.projitems" Label="Shared" />
