@@ -9,6 +9,7 @@ namespace LaTeX_auto_exam_builder_console_application
     {
         static void Main(string[] args)
         {
+
             #region create folders
 
             Directory.CreateDirectory("output");
@@ -19,68 +20,39 @@ namespace LaTeX_auto_exam_builder_console_application
 
             #region check for arguments
 
+            // Check if the file is specified
             if (args.Length != 1)
             {
+                // Check if there are more parameters given
                 if (args.Length > 1)
                     throw new ArgumentException("Must pass only the file name");
 
+                // Check if there is a file given
                 if (args.Length == 0)
                     throw new ArgumentException("Must pass an file name");
 
-                if (args[0] == "help")
-                    throw new ArgumentException("Must pass an file name after the exe file \n" +
-                        "Like so \"LaTeX-auto-ecam-builder-console-application.exe example.tex\"");
             }
 
+            // If the argument is help we specify how to use the application
+            if (args[0] == "help")
+                throw new ArgumentException("Must pass an file name after the exe file \n" +
+                    "Like so \"LaTeX-auto-ecam-builder-console-application.exe example.tex\"");
+
+            // Get the filename from the given parameter
             string filename = args[0];
 
+            // Check if the file has an extension else we add one
             if (!filename.EndsWith(".tex"))
                 filename += ".tex";
 
+            // Check if a full path is given or a file from input is used
             if (!filename.Contains("\\"))
                 filename = Environment.CurrentDirectory + "/input/" + filename;
 
             #endregion
 
-
-            #region converting to latex
-
-            string command = $"pdflatex -halt-on-error -output-directory output {filename}";
-
-
-            try
-            {
-                // create the ProcessStartInfo using "cmd" as the program to be run,
-                // and "/c " as the parameters.
-                // Incidentally, /c tells cmd that we want it to execute the command that follows,
-                // and then exit.
-                ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd", "/c " + command);
-
-                // This means that it will be redirected to the Process.StandardOutput StreamReader.
-                processStartInfo.RedirectStandardOutput = true;
-
-                // Do not create the black window.
-                processStartInfo.CreateNoWindow = true;
-
-                // Now we create a process, assign its ProcessStartInfo and start it
-                Process process = new Process();
-                process.StartInfo = processStartInfo;
-                process.Start();
-
-                // Get the output into a string
-                string result = process.StandardOutput.ReadToEnd();
-
-                // Display the command output.
-                Console.WriteLine(result);
-            }
-            catch (Exception exception)
-            {
-                // Log the exception
-                Console.WriteLine(exception.Message);
-            }
-
-            #endregion
-
+            // This method converts the filename to a pdf
+            LaTeXToPdf.Converter.convert(filename);
 
         }
     }

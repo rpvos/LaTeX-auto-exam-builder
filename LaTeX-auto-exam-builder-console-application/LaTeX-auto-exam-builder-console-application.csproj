@@ -16,4 +16,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="output\" />
+  </ItemGroup>
+
+  <Import Project="..\LaTeXToPdf\LaTeXToPdf.projitems" Label="Shared" />
+
 </Project>

@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <PackageReference Include="WpfMath" Version="0.9.0" />
   </ItemGroup>
+
+  <Import Project="..\LaTeXToPdf\LaTeXToPdf.projitems" Label="Shared" />
 
 </Project>

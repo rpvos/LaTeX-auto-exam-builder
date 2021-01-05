@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaTeX-auto-exam-builder", "LaTeX-auto-exam-builder\LaTeX-auto-exam-builder.csproj", "{C8FD104A-BF3B-4AA0-9427-990AA98A5D82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaTeX-auto-exam-builder", "LaTeX-auto-exam-builder\LaTeX-auto-exam-builder.csproj", "{C8FD104A-BF3B-4AA0-9427-990AA98A5D82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaTeX-auto-exam-builder-console-application", "LaTeX-auto-exam-builder-console-application\LaTeX-auto-exam-builder-console-application.csproj", "{81AF832D-E71C-4FFD-96A2-0F3F61BCBCF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaTeX-auto-exam-builder-console-application", "LaTeX-auto-exam-builder-console-application\LaTeX-auto-exam-builder-console-application.csproj", "{81AF832D-E71C-4FFD-96A2-0F3F61BCBCF8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LaTeXToPdf", "LaTeXToPdf\LaTeXToPdf.shproj", "{C4763533-4EF3-4848-B217-46EE2CC1B96D}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LaTeXToPdf\LaTeXToPdf.projitems*{81af832d-e71c-4ffd-96a2-0f3f61bcbcf8}*SharedItemsImports = 5
+		LaTeXToPdf\LaTeXToPdf.projitems*{c4763533-4ef3-4848-b217-46ee2cc1b96d}*SharedItemsImports = 13
+		LaTeXToPdf\LaTeXToPdf.projitems*{c8fd104a-bf3b-4aa0-9427-990aa98a5d82}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
